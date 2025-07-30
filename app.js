@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+// importing routes
+import userRouter from './src/routes/user.routes.js'
 
 dotenv.config();
 
@@ -15,6 +17,10 @@ app.use(cors({
 app.use(express.urlencoded({extended: true, limit: "16kb"}))
 app.use(express.static("public"));
 app.use(cookieParser());
+
+
+
+app.use("/api/v1/users", userRouter);
 
 
 export {app}
